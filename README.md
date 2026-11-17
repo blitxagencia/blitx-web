@@ -2,7 +2,7 @@
 
 Landing de BlitX enfocada en dos servicios: sitio web para negocios locales y agente de IA que responde en el WhatsApp del negocio.
 
-En vivo: https://blitx.netlify.app
+En vivo: https://blitxagencia.netlify.app (proyecto `blitxagencia` en el Netlify de BlitX)
 
 ## Cómo se edita y se publica
 
