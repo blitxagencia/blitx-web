@@ -2,25 +2,57 @@
 <html lang="es-CL">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>BlitX · Sitio web y agente de WhatsApp para tu negocio</title>
 <meta name="description" content="Hacemos el sitio web de tu negocio y un agente de IA que responde en tu mismo WhatsApp, toma pedidos y agenda, las 24 horas. Sin contrato. Garantizado.">
 <meta property="og:title" content="BlitX · Tu negocio, siempre encendido">
 <meta property="og:description" content="Sitio web + agente de WhatsApp con IA para negocios locales en Chile.">
 <meta property="og:image" content="assets/kaiser-desktop.jpg">
 <meta name="theme-color" content="#05060E">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2305060E'/><path d='M9 8h8.5a4.5 4.5 0 0 1 0 9H9zM9 16h9.5a4.5 4.5 0 0 1 0 9H9z' fill='none' stroke='%2360A5FA' stroke-width='2.6'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="scrollcraft.css">
+<link rel="stylesheet" href="site.css">
 </head>
 <body>
 
-<!-- ============ NAV ============ -->
-<header class="nav" id="top">
-  <div class="wrap nav__in">
+<span data-sc-progress></span>
+<div class="sc-grain" aria-hidden="true"></div>
+
+<!-- ============ BARRA: logo, reloj de la noche (es la navegación), enlaces, CTA ============ -->
+<header class="bar">
+  <div class="bar__in">
     <a href="#top" class="logo" aria-label="BlitX, inicio">BLITX</a>
-    <nav class="nav__links" aria-label="Secciones">
+
+    <div class="clock">
+      <button class="clock__btn" type="button" aria-expanded="false" aria-controls="noche" aria-label="Recorrido de la noche: ir a una sección">
+        <svg class="clock__sky" viewBox="0 0 20 20" aria-hidden="true"><circle class="clock__moon" cx="10" cy="10" r="6"/><circle class="clock__bite" cx="13" cy="7.5" r="5.2"/></svg>
+        <span class="clock__day" id="clockDay">dom</span>
+        <span class="clock__time" id="clockTime">23:47</span>
+        <svg class="clock__chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+      <nav class="night" id="noche" aria-label="La noche, sección por sección" hidden>
+        <p class="night__head">Una noche cualquiera de tu negocio</p>
+        <ol class="night__list">
+          <li><a href="#top"><time>23:47</time>El primer mensaje</a></li>
+          <li><a href="#problema"><time>23:52</time>Nadie le responde</a></li>
+          <li><a href="#calculadora"><time>00:06</time>Lo que se te va</a></li>
+          <li><a href="#servicios"><time>00:40</time>Qué hacemos</a></li>
+          <li><a href="#limites"><time>01:35</time>Lo que no hace</a></li>
+          <li><a href="#caso"><time>02:30</time>Caso real</a></li>
+          <li><a href="#como"><time>03:40</time>Cómo funciona</a></li>
+          <li><a href="#precios"><time>04:50</time>Precios</a></li>
+          <li><a href="#garantia"><time>05:35</time>Garantía</a></li>
+          <li><a href="#nosotros"><time>06:05</time>Quiénes somos</a></li>
+          <li><a href="#preguntas"><time>06:40</time>Preguntas</a></li>
+          <li><a href="#amanecer"><time>07:12</time>Buenos días</a></li>
+        </ol>
+      </nav>
+    </div>
+
+    <nav class="bar__links" aria-label="Secciones">
       <a href="#servicios">Qué hacemos</a>
       <a href="#caso">Caso real</a>
       <a href="#precios">Precios</a>
@@ -34,11 +66,23 @@
 
 <main>
 
-<!-- ============ HERO ============ -->
-<section class="hero">
-  <div class="wrap hero__grid">
+<!-- ============ 23:47 · HERO: ciudad dormida, un teléfono que no ============ -->
+<section class="hero" id="top" data-hour="23:47">
+  <div class="sky" aria-hidden="true">
+    <div class="plane plane--far" data-depth="far">
+      <span class="moon"></span>
+      <svg class="andes" viewBox="0 0 1600 420" preserveAspectRatio="xMidYMax slice" data-andes></svg>
+    </div>
+    <div class="plane plane--haze" data-depth="haze"></div>
+    <div class="plane plane--mid" data-depth="mid">
+      <svg class="city" viewBox="0 0 1600 420" preserveAspectRatio="xMidYMax slice" data-city="night"></svg>
+    </div>
+    <div class="sky__floor"></div>
+  </div>
+
+  <div class="hero__grid">
     <div class="hero__copy">
-      <p class="hero__kicker"><span class="dot"></span> En producción en las 3 sucursales de Pastelería Kaiser</p>
+      <p class="hero__kicker"><span class="dot" aria-hidden="true"></span>En producción en las 3 sucursales de Pastelería Kaiser</p>
       <h1>Tu WhatsApp responde en segundos.<br><span class="hl">Incluso a las 23:47 de un domingo.</span></h1>
       <p class="lead">Hacemos el sitio web de tu negocio y un agente de IA que contesta en <strong>tu mismo número de WhatsApp</strong>: sabe tu carta y tus precios, toma el pedido completo y te lo deja listo. Tú no tocas nada técnico.</p>
       <div class="hero__cta">
@@ -48,20 +92,20 @@
         <a class="btn btn--ghost btn--lg" href="#precios">Ver precios</a>
       </div>
       <ul class="hero__trust">
-        <li><svg class="ico" viewBox="0 0 24 24"><use href="#i-check"/></svg>Sin contrato</li>
-        <li><svg class="ico" viewBox="0 0 24 24"><use href="#i-check"/></svg>Pagas la mitad al final</li>
-        <li><svg class="ico" viewBox="0 0 24 24"><use href="#i-check"/></svg>Garantía de resultado</li>
+        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>Sin contrato</li>
+        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>Pagas la mitad al final</li>
+        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>Garantía de resultado</li>
       </ul>
     </div>
 
-    <!-- Demo de chat que se reproduce sola -->
-    <div class="hero__demo">
+    <!-- Plano focal: la demo de chat real, que se reproduce sola -->
+    <div class="hero__demo plane--focal" data-depth="focal">
       <div class="demo-tabs" role="tablist" aria-label="Elige un rubro">
         <button role="tab" class="demo-tab is-on" data-demo="pasteleria" aria-selected="true">Pastelería</button>
         <button role="tab" class="demo-tab" data-demo="restaurante" aria-selected="false">Restaurante</button>
         <button role="tab" class="demo-tab" data-demo="barberia" aria-selected="false">Barbería</button>
       </div>
-      <div class="phone" aria-live="polite">
+      <div class="phone">
         <div class="phone__bar">
           <span class="phone__avatar" id="demoAvatar">D</span>
           <div>
@@ -70,45 +114,70 @@
           </div>
           <span class="phone__time" id="demoClock">23:47</span>
         </div>
-        <div class="phone__chat" id="demoChat"></div>
+        <div class="phone__chat" id="demoChat" aria-live="polite"></div>
       </div>
       <p class="demo-note">Conversación de ejemplo. Así contesta el agente: con tu carta, tu tono y tus reglas.</p>
+      <!-- Plano cercano: pasa por delante del teléfono -->
+      <div class="near-card" data-depth="near" aria-hidden="true">
+        <svg class="ico" viewBox="0 0 24 24"><use href="#i-check"/></svg>
+        <span>Pedido completo enviado al panel del dueño</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ PROBLEMA ============ -->
-<section class="problem">
-  <div class="wrap problem__grid">
-    <div>
-      <h2>Mientras lees esto, alguien le está escribiendo a tu negocio. <span class="muted">Y nadie le responde.</span></h2>
-    </div>
-    <div class="problem__body">
-      <p>No es falta de clientes. Es que llegan cuando estás atendiendo, cocinando, cortando el pelo o durmiendo. Y el cliente de hoy no espera: si en 10 minutos no le contestas, le escribe al de al lado.</p>
-      <p>Cada "hola, ¿tienen...?" que queda en visto es plata que se va en silencio. No aparece en ninguna cuenta, pero se va igual.</p>
+<!-- ============ 23:52 · PROBLEMA (pin): la frase se arma sola ============ -->
+<section class="problem" id="problema" data-hour="23:52" data-sc-act="pin" data-sc-span="2">
+  <div data-sc-stage class="problem__stage">
+    <div class="problem__in">
+      <div class="problem__main">
+      <h2 class="problem__h">
+        <span class="problem__a" data-sc-cue="0 1 0 0" data-sc-kinetic="lines">Mientras lees esto, alguien le está escribiendo a tu negocio.</span>
+        <span class="problem__b muted" data-sc-cue="0.03 1 0.08 0">Y nadie le responde.</span>
+      </h2>
+      <div class="problem__body">
+        <p data-sc-cue="0.1 1 0.1 0">No es falta de clientes. Es que llegan cuando estás atendiendo, cocinando, cortando el pelo o durmiendo. Y el cliente de hoy no espera: si en 10 minutos no le contestas, le escribe al de al lado.</p>
+        <p data-sc-cue="0.18 1 0.1 0">Cada "hola, ¿tienen...?" que queda en visto es plata que se va en silencio. No aparece en ninguna cuenta, pero se va igual.</p>
+      </div>
+      </div>
+      <!-- La bandeja que se llena sola mientras nadie contesta (mensajes de ejemplo) -->
+      <figure class="inbox" aria-label="Ejemplo: mensajes de clientes llegando de noche, sin respuesta">
+        <figcaption class="inbox__head"><span>Chats <small>· ejemplo</small></span><span class="inbox__count"><b id="inboxCount">3</b> sin responder</span></figcaption>
+        <ol class="inbox__list">
+          <li class="inbox__row" data-min="23:48"><span class="inbox__av" aria-hidden="true">F</span><span class="inbox__txt"><b>Fernanda</b><span>hola, ¿tienen...?</span></span><span class="inbox__meta"><time>23:48</time><i>1</i></span></li>
+          <li class="inbox__row" data-min="23:49"><span class="inbox__av" aria-hidden="true">M</span><span class="inbox__txt"><b>Matías</b><span>¿hacen despacho a Maipú?</span></span><span class="inbox__meta"><time>23:49</time><i>2</i></span></li>
+          <li class="inbox__row" data-min="23:50"><span class="inbox__av" aria-hidden="true">D</span><span class="inbox__txt"><b>Daniela</b><span>buenas, ¿atienden el feriado?</span></span><span class="inbox__meta"><time>23:50</time><i>1</i></span></li>
+          <li class="inbox__row" data-min="23:53"><span class="inbox__av" aria-hidden="true">P</span><span class="inbox__txt"><b>Pedro</b><span><svg class="inbox__mic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-mic"/></svg>Mensaje de voz (0:12)</span></span><span class="inbox__meta"><time>23:53</time><i>1</i></span></li>
+          <li class="inbox__row" data-min="23:56"><span class="inbox__av" aria-hidden="true">J</span><span class="inbox__txt"><b>Javi</b><span>¿cuánto sale corte + barba?</span></span><span class="inbox__meta"><time>23:56</time><i>3</i></span></li>
+          <li class="inbox__row" data-min="23:59"><span class="inbox__av" aria-hidden="true">C</span><span class="inbox__txt"><b>Carolina</b><span>hola!! ¿tienen hora para baño de perrito el sábado?</span></span><span class="inbox__meta"><time>23:59</time><i>1</i></span></li>
+          <li class="inbox__row" data-min="00:00"><span class="inbox__av" aria-hidden="true">R</span><span class="inbox__txt"><b>Rodrigo</b><span>¿sigue disponible?</span></span><span class="inbox__meta"><time>00:00</time><i>1</i></span></li>
+        </ol>
+      </figure>
     </div>
   </div>
+</section>
 
-  <!-- Calculadora -->
-  <div class="wrap">
-    <div class="calc" id="calc">
+<!-- ============ 00:06 · CALCULADORA ============ -->
+<section class="calc-sec sc-section" id="calculadora" data-hour="00:06">
+  <div class="sc-wrap">
+    <div class="calc" id="calc" data-sc-in>
       <div class="calc__inputs">
         <h3>¿Cuánto se te está yendo al mes?</h3>
         <p class="calc__sub">Mueve los números con los de tu negocio.</p>
         <label class="field">
           <span>Mensajes al día que no alcanzas a contestar a tiempo</span>
-          <input type="range" id="cMsgs" min="1" max="40" value="6">
           <output id="oMsgs">6</output>
+          <input type="range" id="cMsgs" min="1" max="40" value="6">
         </label>
         <label class="field">
           <span>Lo que gasta un cliente en promedio</span>
-          <input type="range" id="cTicket" min="3000" max="80000" step="1000" value="15000">
           <output id="oTicket">$15.000</output>
+          <input type="range" id="cTicket" min="3000" max="80000" step="1000" value="15000">
         </label>
         <label class="field">
           <span>De cada 10 que no reciben respuesta, cuántos compran en otro lado</span>
-          <input type="range" id="cRate" min="1" max="10" value="3">
           <output id="oRate">3</output>
+          <input type="range" id="cRate" min="1" max="10" value="3">
         </label>
       </div>
       <div class="calc__result">
@@ -125,13 +194,13 @@
   </div>
 </section>
 
-<!-- ============ SERVICIOS ============ -->
-<section class="services" id="servicios">
-  <div class="wrap">
-    <h2 class="section-title">Dos piezas. <span class="muted">Un solo sistema que vende por ti.</span></h2>
+<!-- ============ 00:40 · SERVICIOS ============ -->
+<section class="services sc-section" id="servicios" data-hour="00:40" data-sc-act="flow">
+  <div class="sc-wrap">
+    <h2 class="section-title" data-sc-in>Dos piezas. <span class="muted">Un solo sistema que vende por ti.</span></h2>
 
     <div class="svc svc--web">
-      <div class="svc__text">
+      <div class="svc__text sc-stack" data-sc-in data-sc-stagger="60">
         <span class="tag">01 · Sitio web</span>
         <h3>Una página que no solo se ve bien: hace el pedido.</h3>
         <p>Tu carta o catálogo con fotos y precios, hecho a la medida de tu marca. El cliente arma su pedido en el carrito y le llega a tu WhatsApp ya escrito, con productos, cantidades y total. Nada de "¿me mandas la carta?".</p>
@@ -143,148 +212,184 @@
         </ul>
       </div>
       <figure class="svc__media">
-        <img src="assets/kaiser-desktop.jpg" alt="Sitio web de Pastelería Kaiser hecho por BlitX, sucursal Padre Hurtado" loading="lazy" width="1200" height="750">
+        <div class="browser" data-sc-reveal="left" data-sc-reveal-at="0.08 0.32">
+          <div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span>pasteleriakaiser.cl</span></div>
+          <img src="assets/kaiser-desktop.jpg" alt="Sitio web de Pastelería Kaiser hecho por BlitX, sucursal Padre Hurtado" loading="lazy" width="1200" height="750">
+        </div>
         <img class="svc__phone" src="assets/kaiser-mobile.jpg" alt="El mismo sitio en el celular" loading="lazy" width="500" height="1082">
-        <figcaption>pasteleria-kaiser.netlify.app · hecho por BlitX</figcaption>
+        <figcaption><a href="https://pasteleriakaiser.cl" target="_blank" rel="noopener">pasteleriakaiser.cl</a> · hecho por BlitX</figcaption>
       </figure>
     </div>
 
     <div class="svc svc--wa">
-      <div class="svc__text">
+      <div class="svc__text sc-stack" data-sc-in data-sc-stagger="60">
         <span class="tag tag--wa">02 · Agente de WhatsApp</span>
         <h3>Un vendedor que nunca deja a nadie en visto.</h3>
         <p>Vive en el número que tus clientes ya conocen. Tú sigues usando tu WhatsApp como siempre; el agente contesta lo que llega, con tu carta completa en la cabeza y en el tono de tu negocio.</p>
       </div>
-      <div class="abilities">
-        <div class="ability">
-          <svg class="ico ico--lg" viewBox="0 0 24 24"><use href="#i-bolt"/></svg>
-          <h4>Responde en segundos</h4>
-          <p>De día, de noche y en feriado. Nadie espera.</p>
-        </div>
-        <div class="ability">
-          <svg class="ico ico--lg" viewBox="0 0 24 24"><use href="#i-book"/></svg>
-          <h4>Sabe tu carta entera</h4>
-          <p>Precios, tamaños, horarios, despacho y tus reglas de siempre.</p>
-        </div>
-        <div class="ability">
-          <svg class="ico ico--lg" viewBox="0 0 24 24"><use href="#i-mic"/></svg>
-          <h4>Escucha audios y ve fotos</h4>
-          <p>Como la gente escribe de verdad, no como un formulario.</p>
-        </div>
-        <div class="ability">
-          <svg class="ico ico--lg" viewBox="0 0 24 24"><use href="#i-hand"/></svg>
-          <h4>Te pasa el pedido listo</h4>
-          <p>Cuando hay que cobrar o confirmar, te avisa con todo armado.</p>
-        </div>
-        <div class="ability ability--wide">
-          <svg class="ico ico--lg" viewBox="0 0 24 24"><use href="#i-panel"/></svg>
+      <ul class="abilities" data-sc-in data-sc-stagger="70">
+        <li class="ability">
+          <svg class="ico ico--lg" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bolt"/></svg>
+          <div><h4>Responde en segundos</h4><p>De día, de noche y en feriado. Nadie espera.</p></div>
+        </li>
+        <li class="ability">
+          <svg class="ico ico--lg" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-book"/></svg>
+          <div><h4>Sabe tu carta entera</h4><p>Precios, tamaños, horarios, despacho y tus reglas de siempre.</p></div>
+        </li>
+        <li class="ability">
+          <svg class="ico ico--lg" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-mic"/></svg>
+          <div><h4>Escucha audios y ve fotos</h4><p>Como la gente escribe de verdad, no como un formulario.</p></div>
+        </li>
+        <li class="ability">
+          <svg class="ico ico--lg" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-hand"/></svg>
+          <div><h4>Te pasa el pedido listo</h4><p>Cuando hay que cobrar o confirmar, te avisa con todo armado.</p></div>
+        </li>
+        <li class="ability ability--wide">
+          <svg class="ico ico--lg" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-panel"/></svg>
           <div>
             <h4>Y tú mantienes el control</h4>
             <p>Un panel donde lees todas las conversaciones, respondes a mano cuando quieras, pausas el agente y le dejas indicaciones del día ("hoy no hay torta de chocolate").</p>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Lo que NO hace -->
-    <div class="nots">
-      <div class="nots__head">
-        <h3>Lo que el agente <em>no</em> hace. A propósito.</h3>
-        <p>Una IA que inventa es peor que no tener nada. Por eso lo diseñamos con límites claros:</p>
-      </div>
-      <ul class="nots__list">
-        <li><strong>No cobra.</strong> No manda datos de transferencia por su cuenta. Al llegar al pago, te pasa el pedido para que tú cierres.</li>
-        <li><strong>No inventa.</strong> Si no está en tu carta, no lo ofrece ni le pone precio.</li>
-        <li><strong>No promete por ti.</strong> No confirma plazos ni disponibilidad que tú no hayas definido.</li>
+        </li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- ============ CASO KAISER ============ -->
-<section class="case" id="caso">
-  <div class="wrap">
-    <div class="case__head">
-      <h2>No te lo contamos. <span class="muted">Ya está funcionando.</span></h2>
-      <p>Pastelería Kaiser tiene tres sucursales en Padre Hurtado, Peñaflor y Huechuraba. Les hicimos el sitio de cada una y un agente de WhatsApp por sucursal. Hoy contestan clientes reales todos los días y el equipo maneja el panel solo.</p>
+<!-- ============ 01:35 · LO QUE NO HACE (el acto más quieto, antes del pico) ============ -->
+<section class="nots sc-section" id="limites" data-hour="01:35">
+  <div class="sc-wrap nots__grid">
+    <div class="nots__head sc-stack" data-sc-in data-sc-stagger="60">
+      <h2>Lo que el agente <em>no</em> hace. <span class="muted">A propósito.</span></h2>
+      <p>Una IA que inventa es peor que no tener nada. Por eso lo diseñamos con límites claros:</p>
     </div>
-    <div class="case__stats">
-      <div class="stat"><span class="stat__n">3 de 3</span><span class="stat__l">sucursales con sitio y agente en producción</span></div>
-      <div class="stat"><span class="stat__n">+200</span><span class="stat__l">mensajes respondidos en los primeros 2 días de una sola sucursal</span></div>
-      <div class="stat"><span class="stat__n">0</span><span class="stat__l">cuentas extra para el cliente: la plataforma la pagamos nosotros</span></div>
+    <ul class="nots__list" data-sc-in data-sc-stagger="80">
+      <li><strong>No cobra.</strong> <span>No manda datos de transferencia por su cuenta. Al llegar al pago, te pasa el pedido para que tú cierres.</span></li>
+      <li><strong>No inventa.</strong> <span>Si no está en tu carta, no lo ofrece ni le pone precio.</span></li>
+      <li><strong>No promete por ti.</strong> <span>No confirma plazos ni disponibilidad que tú no hayas definido.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 02:30 · CASO KAISER (PICO): Santiago se enciende ============ -->
+<section class="case" id="caso" data-hour="02:30" data-sc-act="pin" data-sc-span="2.8">
+  <div data-sc-stage class="case__stage">
+    <div class="case__copy">
+      <h2 data-sc-cue="0 1 0 0">No te lo contamos. <span class="muted">Ya está funcionando.</span></h2>
+      <p data-sc-cue="0.08 1 0.2 0">Pastelería Kaiser tiene tres sucursales en Padre Hurtado, Peñaflor y Huechuraba. Les hicimos el sitio de cada una y un agente de WhatsApp por sucursal. Hoy contestan clientes reales todos los días y el equipo maneja el panel solo.</p>
+      <div class="case__stats">
+        <div class="stat" data-sc-cue="0.62 1 0.15 0"><span class="stat__n"><span data-sc-count="0 3" data-sc-count-at="0.62 0.78">3</span> de 3</span><span class="stat__l">sucursales con sitio y agente en producción</span></div>
+        <div class="stat" data-sc-cue="0.68 1 0.15 0"><span class="stat__n">+<span data-sc-count="0 200" data-sc-count-at="0.68 0.86">200</span></span><span class="stat__l">mensajes respondidos en los primeros 2 días de una sola sucursal</span></div>
+        <div class="stat" data-sc-cue="0.74 1 0.15 0"><span class="stat__n">0</span><span class="stat__l">cuentas extra para el cliente: la plataforma la pagamos nosotros</span></div>
+      </div>
     </div>
 
-    <div class="case__grid">
-      <!-- ESPACIO: testimonio (video o cita de un cliente) -->
-      <div class="slot slot--quote">
-        <span class="slot__label">Espacio para testimonio</span>
-        <p>Video corto o cita del dueño de Kaiser contando cómo cambió la atención por WhatsApp.</p>
-      </div>
-      <div class="works">
-        <a class="work" href="https://pasteleria-kaiser.netlify.app" target="_blank" rel="noopener">
-          <img src="assets/kaiser-desktop.jpg" alt="Sitio de Pastelería Kaiser" loading="lazy" width="1200" height="750">
-          <span>Pastelería Kaiser · sitio + 3 agentes</span>
-        </a>
-        <a class="work" href="https://bonappetit-trattoria.netlify.app" target="_blank" rel="noopener">
-          <img src="assets/bonappetit-desktop.jpg" alt="Sitio de Bon Appetit Trattoria" loading="lazy" width="1200" height="750">
-          <span>Bon Appetit Trattoria · sitio web</span>
-        </a>
-        <!-- ESPACIO: próximo proyecto del portafolio -->
-        <div class="work slot">
-          <span class="slot__label">Espacio para el próximo proyecto</span>
-        </div>
-      </div>
+    <figure class="map" aria-label="Mapa de Santiago con las tres sucursales de Pastelería Kaiser: Huechuraba, Padre Hurtado y Peñaflor">
+      <svg viewBox="0 0 600 560" class="map__svg" aria-hidden="true">
+        <defs>
+          <radialGradient id="cityGlow" cx="0.72" cy="0.42" r="0.55">
+            <stop offset="0" stop-color="#3B82F6" stop-opacity=".16"/>
+            <stop offset="1" stop-color="#3B82F6" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="600" height="560" fill="url(#cityGlow)"/>
+        <g class="map__rings">
+          <circle cx="450" cy="237" r="90"/><circle cx="450" cy="237" r="190"/><circle cx="450" cy="237" r="300"/><circle cx="450" cy="237" r="420"/>
+        </g>
+        <path class="map__andes" d="M560 0 L600 0 L600 560 L585 560 L578 470 L590 400 L571 330 L586 250 L568 170 L582 90 Z"/>
+        <text class="map__ref" x="572" y="40" text-anchor="end">Cordillera</text>
+        <g class="map__centro"><circle cx="450" cy="237" r="3.5"/><text x="438" y="232" text-anchor="end">Santiago centro</text></g>
+        <path class="map__route" d="M465 110 C 380 200, 280 300, 195 426 S 120 480, 105 489" pathLength="1"/>
+        <g class="branch" data-at="0.22" style="--x:465px;--y:110px">
+          <circle class="branch__pulse" cx="465" cy="110" r="10"/><circle class="branch__dot" cx="465" cy="110" r="7"/>
+          <text x="482" y="106">Huechuraba</text><text class="branch__sub" x="482" y="124">sitio + agente</text>
+        </g>
+        <g class="branch" data-at="0.36" style="--x:195px;--y:426px">
+          <circle class="branch__pulse" cx="195" cy="426" r="10"/><circle class="branch__dot" cx="195" cy="426" r="7"/>
+          <text x="213" y="420">Padre Hurtado</text><text class="branch__sub" x="213" y="438">sitio + agente</text>
+        </g>
+        <g class="branch" data-at="0.5" style="--x:105px;--y:489px">
+          <circle class="branch__pulse" cx="105" cy="489" r="10"/><circle class="branch__dot" cx="105" cy="489" r="7"/>
+          <text x="123" y="508">Peñaflor</text><text class="branch__sub" x="123" y="526">sitio + agente</text>
+        </g>
+      </svg>
+      <figcaption>Pastelería Kaiser · tres sucursales, tres agentes</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- Portafolio, a continuación del pico -->
+<section class="works-sec" aria-label="Proyectos hechos por BlitX">
+  <div class="sc-wrap">
+    <!-- ESPACIO: testimonio (video o cita del dueño de Kaiser contando cómo cambió la atención por WhatsApp). Se muestra cuando exista. -->
+    <div class="works" data-sc-in data-sc-stagger="80">
+      <a class="work work--lg" href="https://pasteleriakaiser.cl" target="_blank" rel="noopener">
+        <span class="work__img"><img src="assets/kaiser-desktop.jpg" alt="Sitio de Pastelería Kaiser" loading="lazy" width="1200" height="750"></span>
+        <span class="work__cap">Pastelería Kaiser · sitio + 3 agentes</span>
+      </a>
+      <a class="work work--lg" href="https://cafeteriasibarita.cl/" target="_blank" rel="noopener">
+        <span class="work__img"><img src="assets/sibarita-desktop.jpg" alt="Sitio de Sibarita Café, Talagante" loading="lazy" width="1200" height="750"></span>
+        <span class="work__cap">Sibarita Café · sitio web</span>
+      </a>
+      <a class="work" href="https://bonappetit-trattoria.netlify.app" target="_blank" rel="noopener">
+        <span class="work__img"><img src="assets/bonappetit-desktop.jpg" alt="Sitio de Bon Appetit Trattoria" loading="lazy" width="1200" height="750"></span>
+        <span class="work__cap">Bon Appetit Trattoria · sitio web</span>
+      </a>
+      <a class="work" href="https://volcan-demo-blitx.netlify.app/" target="_blank" rel="noopener">
+        <span class="work__img"><img src="assets/volcan-desktop.jpg" alt="Demo del sitio de Volcán Pastelería, Talagante" loading="lazy" width="1200" height="750"></span>
+        <span class="work__cap">Volcán Pastelería · demo</span>
+      </a>
+      <!-- ESPACIO: próximo proyecto del portafolio -->
+      <a class="work work--next" href="https://wa.me/56984382413?text=Hola%20BlitX%2C%20quiero%20ver%20c%C3%B3mo%20quedar%C3%ADa%20mi%20negocio" target="_blank" rel="noopener">
+        <span class="work__img work__img--empty"><span>El próximo proyecto</span></span>
+        <span class="work__cap">Tu negocio · hablemos</span>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ============ CÓMO FUNCIONA ============ -->
-<section class="how">
-  <div class="wrap">
-    <h2 class="section-title">Tú pones el negocio. <span class="muted">Nosotros, todo lo demás.</span></h2>
-    <ol class="steps">
+<!-- ============ 03:40 · CÓMO FUNCIONA (pan): un camino corto ============ -->
+<section class="how" id="como" data-hour="03:40" data-sc-act="pan" data-sc-span="3">
+  <div data-sc-stage class="how__stage">
+    <ol class="rail" data-sc-pan="0.04">
+      <li class="rail__lead">
+        <h2>Tú pones el negocio. <span class="muted">Nosotros, todo lo demás.</span></h2>
+      </li>
       <li class="step">
         <span class="step__n">1</span>
-        <div>
-          <h3>Conversamos 20 minutos</h3>
-          <p>Nos cuentas cómo vendes, qué te preguntan siempre y dónde se te escapan clientes. Te decimos honestamente si esto te sirve o no.</p>
-        </div>
+        <h3>Conversamos 20 minutos</h3>
+        <p>Nos cuentas cómo vendes, qué te preguntan siempre y dónde se te escapan clientes. Te decimos honestamente si esto te sirve o no.</p>
       </li>
       <li class="step">
         <span class="step__n">2</span>
-        <div>
-          <h3>Construimos tu sitio y tu agente</h3>
-          <p>Con tu carta, tus precios y tus reglas. Tu sitio queda listo en días. Al agente lo probamos con conversaciones reales antes de que hable con un solo cliente.</p>
-        </div>
+        <h3>Construimos tu sitio y tu agente</h3>
+        <p>Con tu carta, tus precios y tus reglas. Tu sitio queda listo en días. Al agente lo probamos con conversaciones reales antes de que hable con un solo cliente.</p>
       </li>
-      <li class="step">
+      <li class="step step--tech">
         <span class="step__n">3</span>
-        <div>
-          <h3>Conectamos tu número en una reunión</h3>
-          <p>Una videollamada corta donde autorizas tu WhatsApp desde tu Facebook. Te guiamos clic por clic. Es lo único "técnico" que te toca.</p>
-        </div>
+        <h3>Conectamos tu número en una reunión</h3>
+        <p>Una videollamada corta donde autorizas tu WhatsApp desde tu Facebook. Te guiamos clic por clic. Es lo único "técnico" que te toca.</p>
       </li>
       <li class="step">
         <span class="step__n">4</span>
-        <div>
-          <h3>Lo ves funcionando y recién ahí pagas el resto</h3>
-          <p>Te mostramos cómo usar el panel, y el primer mes de mensualidad va por nuestra cuenta mientras compruebas los resultados.</p>
-        </div>
+        <h3>Lo ves funcionando y recién ahí pagas el resto</h3>
+        <p>Te mostramos cómo usar el panel, y el primer mes de mensualidad va por nuestra cuenta mientras compruebas los resultados.</p>
       </li>
     </ol>
+    <div class="road" aria-hidden="true"><span class="road__fill"></span></div>
   </div>
 </section>
 
-<!-- ============ PRECIOS ============ -->
+<!-- ============ 04:50 · PRECIOS ============ -->
 <!-- Precios por local. Si cambian, cambiar también el ancla "por separado" y las cuotas. -->
-<section class="pricing" id="precios">
-  <div class="wrap">
-    <div class="pricing__head">
+<section class="pricing sc-section" id="precios" data-hour="04:50">
+  <div class="sc-wrap">
+    <div class="pricing__head sc-stack" data-sc-in data-sc-stagger="60">
       <h2>Precios claros. <span class="muted">Sin letra chica.</span></h2>
       <p>Valores por local. Pago por transferencia, sin contrato y sin permanencia: si no te sirve, lo cancelas cuando quieras.</p>
     </div>
 
-    <div class="plans">
+    <div class="plans" data-sc-in data-sc-stagger="90">
       <article class="plan">
         <h3>Sitio web</h3>
         <p class="plan__for">Para que te encuentren y te pidan sin preguntar.</p>
@@ -335,18 +440,19 @@
       </article>
     </div>
 
-    <p class="multi"><strong>¿Tienes más de un local?</strong> El segundo y el tercero nos cuestan mucho menos trabajo, y eso se nota en el precio. Escríbenos y lo armamos juntos.</p>
+    <p class="multi" data-sc-in><strong>¿Tienes más de un local?</strong> El segundo y el tercero nos cuestan mucho menos trabajo, y eso se nota en el precio. Escríbenos y lo armamos juntos.</p>
   </div>
 </section>
 
-<!-- ============ GARANTÍA ============ -->
-<section class="guarantee">
-  <div class="wrap guarantee__in">
-    <svg class="guarantee__seal" viewBox="0 0 120 120" aria-hidden="true">
-      <circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="4 6"/>
-      <path d="M38 61l15 15 30-32" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<!-- ============ 05:35 · GARANTÍA: el sello se dibuja solo ============ -->
+<section class="guarantee sc-section" id="garantia" data-hour="05:35">
+  <div class="sc-wrap guarantee__in">
+    <svg class="seal" viewBox="0 0 120 120" aria-hidden="true">
+      <circle class="seal__ring" cx="60" cy="60" r="54" pathLength="1"/>
+      <circle class="seal__dash" cx="60" cy="60" r="46"/>
+      <path class="seal__check" d="M38 61l15 15 30-32" pathLength="1"/>
     </svg>
-    <div>
+    <div class="sc-stack" data-sc-in data-sc-stagger="70">
       <h2>El riesgo es nuestro, no tuyo.</h2>
       <p class="guarantee__promise">Si en 30 días no ves al menos un <strong>20% más de pedidos o consultas atendidas</strong>, te devolvemos el 100% de la instalación.</p>
       <p>Y como no hay contrato, si en algún momento sientes que no vale lo que pagas, lo cancelas y listo. Preferimos ganarnos cada mes antes que amarrarte.</p>
@@ -354,14 +460,14 @@
   </div>
 </section>
 
-<!-- ============ FUNDADORES ============ -->
-<section class="founders">
-  <div class="wrap founders__grid">
+<!-- ============ 06:05 · FUNDADORES ============ -->
+<section class="founders sc-section" id="nosotros" data-hour="06:05" data-sc-act="flow">
+  <div class="sc-wrap founders__grid">
     <div class="founders__photos">
-      <figure><img src="assets/benjamin.jpg" alt="Benjamín, cofundador de BlitX" loading="lazy" width="600" height="688"><figcaption>Benjamín<span>Clientes y operación</span></figcaption></figure>
-      <figure><img src="assets/ian.jpg" alt="Ian, cofundador de BlitX" loading="lazy" width="600" height="649"><figcaption>Ian<span>Sitios y agentes</span></figcaption></figure>
+      <figure class="founder founder--b" data-sc-reveal="up" data-sc-reveal-at="0.04 0.3"><img src="assets/benjamin.jpg" alt="Benjamín, cofundador de BlitX" loading="lazy" width="600" height="688"><figcaption>Benjamín<span>Clientes y operación</span></figcaption></figure>
+      <figure class="founder founder--i" data-sc-reveal="up" data-sc-reveal-at="0.1 0.36"><img src="assets/ian.jpg" alt="Ian, cofundador de BlitX" loading="lazy" width="600" height="649"><figcaption>Ian<span>Sitios y agentes</span></figcaption></figure>
     </div>
-    <div class="founders__text">
+    <div class="founders__text sc-stack" data-sc-in data-sc-stagger="70">
       <h2>Somos dos. <span class="muted">Y eso es una ventaja.</span></h2>
       <p>No somos una agencia gigante donde tu negocio es un número. Somos Benjamín e Ian, de Santiago. Uno habla contigo y el otro construye tu sistema, y a los dos nos puedes escribir directo.</p>
       <p>¿Por qué ofrecemos garantía y te dejamos pagar la mitad al final? Porque estamos construyendo nuestra reputación cliente por cliente, y un cliente feliz que nos recomienda vale más que cualquier contrato.</p>
@@ -374,14 +480,14 @@
   </div>
 </section>
 
-<!-- ============ FAQ ============ -->
-<section class="faq" id="preguntas">
-  <div class="wrap faq__grid">
-    <div>
+<!-- ============ 06:40 · FAQ ============ -->
+<section class="faq sc-section" id="preguntas" data-hour="06:40">
+  <div class="sc-wrap faq__grid">
+    <div class="faq__head">
       <h2>Preguntas que nos hacen siempre.</h2>
       <p class="muted-p">¿Tienes otra? Escríbenos por WhatsApp, te contesta una persona.</p>
     </div>
-    <div class="faq__list">
+    <div class="faq__list" data-sc-in data-sc-stagger="40">
       <details>
         <summary>¿Tengo que cambiar mi número de WhatsApp?</summary>
         <p>No. El agente funciona en el número que tus clientes ya tienen guardado, y tú puedes seguir usando la app normalmente. Si quieres contestar tú, contestas.</p>
@@ -418,32 +524,51 @@
   </div>
 </section>
 
-<!-- ============ CTA FINAL ============ -->
-<section class="final">
-  <div class="wrap final__in">
-    <h2>Puedes seguir perdiendo los mensajes que llegan cuando no alcanzas. <span class="hl">O puedes tener a alguien que los conteste por ti desde esta semana.</span></h2>
-    <p>Escríbenos y te mostramos en una conversación de 20 minutos cómo quedaría tu negocio. Sin compromiso.</p>
-    <a class="btn btn--wa btn--lg" href="https://wa.me/56984382413?text=Hola%20BlitX%2C%20quiero%20ver%20c%C3%B3mo%20quedar%C3%ADa%20mi%20negocio" target="_blank" rel="noopener">
-      <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg>Escribir a BlitX por WhatsApp
-    </a>
+<!-- ============ 07:12 · AMANECER: el cierre ============ -->
+<section class="dawn" id="amanecer" data-hour="07:12">
+  <div class="sc-wrap dawn__grid">
+    <div class="dawn__copy sc-stack" data-sc-in data-sc-stagger="80">
+      <h2>Puedes seguir perdiendo los mensajes que llegan cuando no alcanzas. <span class="hl">O puedes tener a alguien que los conteste por ti desde esta semana.</span></h2>
+      <p>Escríbenos y te mostramos en una conversación de 20 minutos cómo quedaría tu negocio. Sin compromiso.</p>
+      <a class="btn btn--wa btn--lg" href="https://wa.me/56984382413?text=Hola%20BlitX%2C%20quiero%20ver%20c%C3%B3mo%20quedar%C3%ADa%20mi%20negocio" target="_blank" rel="noopener">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg>Escribir a BlitX por WhatsApp
+      </a>
+    </div>
+
+    <!-- El resumen de la mañana: se arma con lo que el visitante vio en esta página -->
+    <aside class="morning" aria-label="Resumen de la noche" data-sc-in>
+      <p class="morning__when"><span id="mDay">lunes</span> · <span id="mTime">07:12</span></p>
+      <p class="morning__title">Buenos días. Mientras dormías:</p>
+      <ul class="morning__list" id="mList"></ul>
+      <p class="morning__calc" id="mCalc"></p>
+      <p class="morning__note">Resumen de ejemplo, armado con lo que viste en esta página.</p>
+    </aside>
   </div>
+
+  <div class="dawn__sky" aria-hidden="true">
+    <svg class="andes andes--dawn" viewBox="0 0 1600 420" preserveAspectRatio="xMidYMax slice" data-andes></svg>
+    <svg class="city city--dawn" viewBox="0 0 1600 420" preserveAspectRatio="xMidYMax slice" data-city="dawn"></svg>
+  </div>
+
+  <footer class="footer">
+    <div class="sc-wrap footer__in">
+      <div>
+        <span class="logo">BLITX</span>
+        <p>Negocios locales, siempre encendidos.</p>
+      </div>
+      <div class="footer__contact">
+        <a href="https://wa.me/56984382413" target="_blank" rel="noopener">+56 9 8438 2413</a>
+        <a href="mailto:blitx.agencia@gmail.com">blitx.agencia@gmail.com</a>
+        <span>Santiago, Chile</span>
+      </div>
+    </div>
+  </footer>
 </section>
 
 </main>
 
-<footer class="footer">
-  <div class="wrap footer__in">
-    <div>
-      <span class="logo">BLITX</span>
-      <p>Negocios locales, siempre encendidos.</p>
-    </div>
-    <div class="footer__contact">
-      <a href="https://wa.me/56984382413" target="_blank" rel="noopener">+56 9 8438 2413</a>
-      <a href="mailto:blitx.agencia@gmail.com">blitx.agencia@gmail.com</a>
-      <span>Santiago, Chile</span>
-    </div>
-  </div>
-</footer>
+<!-- Notificaciones de la noche (ejemplos de las conversaciones de la demo) -->
+<div class="toasts" id="toasts" aria-live="polite"></div>
 
 <a class="float-wa" href="https://wa.me/56984382413?text=Hola%20BlitX" target="_blank" rel="noopener" aria-label="Escribir a BlitX por WhatsApp">
   <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg>
@@ -460,6 +585,7 @@
   <symbol id="i-panel" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M9 4v16M12.5 9h5M12.5 13h3.5"/></symbol>
 </svg>
 
-<script src="main.js"></script>
+<script src="scrollcraft.js"></script>
+<script src="site.js"></script>
 </body>
 </html>
